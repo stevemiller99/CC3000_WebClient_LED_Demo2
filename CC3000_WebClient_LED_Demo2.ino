@@ -32,14 +32,12 @@ String   get_request  = "";
 
 #define WLAN_SSID "XXXXXXXXXXXXXXXXX"   // Use your own network here           
 #define WLAN_PASS "XXXXXXXXXXXXXXXXX"
+
 #define WLAN_SECURITY   WLAN_SEC_WPA2
-#define IDLE_TIMEOUT_MS  3000      // Amount of time to wait (in milliseconds) with no data 
-                                   // received before closing the connection.  If you know the server
-                                   // you're accessing is quick to respond, you can reduce this value.
-                                   
+#define IDLE_TIMEOUT_MS  3000     
+
 #define WEBSITE "XXXXXXXXXXXXXXXXX"   // Use your website and webpage here.
 #define WEBPAGE "XXXXXXXXXXXXXXXXX"   // It's basically a file with "led8=1" as the only content
-
 
 uint32_t ip;
 //uint32_t t;
@@ -102,6 +100,7 @@ void setup(void)
   
   if (www.connected()) 
   {
+    Serial.println();
     boolean sentContent = false;
     www.fastrprint(F("GET "));
     www.fastrprint(WEBPAGE);
@@ -111,7 +110,7 @@ void setup(void)
     www.fastrprint(F("\r\n"));
     www.fastrprint(F("\r\n"));
     www.println();
-//    Serial.println(F("Request sent"));
+    Serial.println(F("Request sent"));
   } 
   else 
   {
